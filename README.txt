@@ -1,8 +1,16 @@
-1. Download any/all historical prices for funds
-2. Put them all in /retirement/accounts/raw, even if they're not all in the same account
-3. Download the benchmark (SPX) and put in folder /retirement/benchmark
-4. Run "formatFunds" to remove some extra columns and rename the columns
-5. Run "normalizeFunds" to generate the growth of $100
+1. Download
+    a) Download the historical prices for funds and put into /retirement/funds/raw
+    The dates should all be first of the month. Last row might have a current month, like 12/14: remove that row...all dates should be 1st of the month
+    b) Download the dividend data for the funds and put into /retirement/funds/raw/dividends
+2. Format
+    a) Run "formatFunds" to remove some extra columns and rename the columns
+    b) Run "formatDividends" to aggregate the dividends for a month
+3. Run "calcNumShares" which will compute the number of shares a set amount ($10,000) would have bought as of the first price available (first row in the fund data). The account values is calculated from then on as this number of shares times the current price
+4. Run "addDividends" to convert the per-share dividend amount to $$. A dividend of $.1 per share times 100 shares would result in a $10 dividend, so compute and store the $10.
+Download the benchmark (SPX) and put in folder /retirement/benchmark
+5. Run "calcTotalFundValue" to generate the growth of $100
+
+
 6. Run "summarizeFunds" to generate volatility and annualized growth
 5. Go into "mergeFunds"
     a) check the dictionary entries: each account has a set of funds associated which has to be up to date.
