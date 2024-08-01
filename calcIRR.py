@@ -29,7 +29,7 @@ def calcGrowth(val, dailyRate, numDays):
 def depositLoop(deposits, endDate, irr):
     l = []
     for row in deposits.iterrows():
-        startingVal = float(row[1]['value'])
+        startingVal = float(row[1]['amount'])
         depositDate = pd.to_datetime(row[1]['date']).date()
         diff = endDate - depositDate
         numDays = diff.days
